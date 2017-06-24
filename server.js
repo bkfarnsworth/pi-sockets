@@ -15,8 +15,17 @@ const server = express()
 
 const io = socketIO(server);
 
+var sockets = [];
+
 io.on('connection', (socket) => {
   console.log('Client connected');
+  sockets.push(socket);
+  socket.on('toggleLED', function(){
+      console.log('toggleLED')
+      sockets.forEach(function(s) {
+         s.emit('toggleLED');
+      });
+  });
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 

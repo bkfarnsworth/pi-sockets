@@ -1,6 +1,7 @@
 <html>
   <body>
     <p id='server-time'></p>
+    <button id="button">Toggle LED</button>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
@@ -8,6 +9,12 @@
       socket.on('time', function(timeString) {
         el.innerHTML = 'Server time: ' + timeString;
       });
+
+      var button = document.getElementById('button');
+      button.addEventListener('click', function() {
+        socket.emit('toggleLED');
+      });
+
     </script>
   </body>
 </html>
