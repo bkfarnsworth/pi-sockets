@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
 	});
 });
 
-emitEventToAllSockets(event) {
+function emitEventToAllSockets(event) {
 	console.log(event);
 	sockets.forEach(function(s) {
 		s.emit(event);

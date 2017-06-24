@@ -1,6 +1,8 @@
 // after changing this file, use scp to copy to the pi:
 //scp ~/life/Side-Projects/pi-sockets/pi-client.js pi@10.210.56.230:~/Projects/pi-sockets/script.js
 
+console.log('running pi-client');
+
 const onoff = require('onoff');
 const io = require('socket.io-client');
 
@@ -35,7 +37,7 @@ function stop() {
 	clearInterval(intervalHandler);
 }
 
-blinkLED(intervalInMS=1000){
+function blinkLED(intervalInMS){
 	//clear any existing intervals
 	clearInterval(intervalHandler);
 
