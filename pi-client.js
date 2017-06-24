@@ -35,6 +35,7 @@ function turnLeft() {
 function stop() {
 	console.log('stop');
 	clearInterval(intervalHandler);
+	led.write(0);
 }
 
 function blinkLED(intervalInMS){
