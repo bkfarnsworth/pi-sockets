@@ -1,13 +1,44 @@
 <html>
+	<head>
+		<style>
+			.button-container {
+				display: flex;
+				justify-content: center;
+				/*margin-top: 50px;*/
+				align-items: center;
+				height: 100%;
+			}
+
+			.button {
+				display: inline-block;
+				background: pink;
+				height: 200px;
+				width: 30%;
+				margin: 0 10px;
+				font-size: 20px;
+			}
+		</style>
+	</head>
 	<body>
-		<button id="button">Toggle LED</button>
+		<div class="button-container">
+			<button id="left-button" class="button">Right</button>
+			<button id="right-button" class="button">Left</button>
+		</div>
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
-			var socket = io();
-			var button = document.getElementById('button');
-			button.addEventListener('click', function() {
-				socket.emit('toggleLED');
-			});
+			// var socket = io();
+
+			// //left button
+			// var button = document.getElementById('left-button');
+			// button.addEventListener('click', function() {
+			// 	socket.emit('toggleLED');
+			// });
+
+			// //right button
+			// var button = document.getElementById('right-button');
+			// button.addEventListener('click', function() {
+			// 	socket.emit('toggleLED');
+			// });
 		</script>
 	</body>
 </html>
