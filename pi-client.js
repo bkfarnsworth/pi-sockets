@@ -17,7 +17,6 @@ socket.on('toggleLED', function(){
 });
 
 process.on('SIGINT', function() {
-	clearInterval(interval);
 	led.writeSync(0);
 	led.unexport();
 	console.log('done')
