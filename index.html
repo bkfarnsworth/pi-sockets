@@ -35,25 +35,32 @@
 
 			//right button
 			var rightButton = document.getElementById('right-button');
-			rightButton.addEventListener('mousedown touchstart', function() {
-				console.log('turnRight');
-				socket.emit('turnRight');
-			});
-			rightButton.addEventListener('mouseup touchend', function() {
-				console.log('stop');
-				socket.emit('stop');
-			});
+			rightButton.addEventListener('mousedown',  emitTurnRight);
+			rightButton.addEventListener('touchstart', emitTurnRight);
+			rightButton.addEventListener('mouseup',    emitStop);
+			rightButton.addEventListener('touchend',   emitStop);
 
 			//left button
 			var leftButton = document.getElementById('left-button');
-			leftButton.addEventListener('mousedown touchstart', function() {
+			leftButton.addEventListener('mousedown',  emitTurnLeft);
+			leftButton.addEventListener('touchstart', emitTurnLeft);
+			leftButton.addEventListener('mouseup',    emitStop);
+			leftButton.addEventListener('touchend',   emitStop);
+
+			function emitTurnRight() { 
+				console.log('turnRight');
+				socket.emit('turnRight');
+			}
+
+			function emitTurnLeft() {
 				console.log('turnLeft');
 				socket.emit('turnLeft');
-			});
-			leftButton.addEventListener('mouseup touchend', function() {
+			}
+
+			function emitStop() {
 				console.log('stop');
 				socket.emit('stop');
-			});
+			}
 		</script>
 	</body>
 </html>
