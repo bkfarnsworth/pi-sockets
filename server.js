@@ -19,13 +19,10 @@ io.on('connection', (socket) => {
 	//add to list of sockets
 	sockets.push(socket);
 	
-	//listen for LED changes
-	socket.on('toggleLED', function(){
-		console.log('toggleLED')
-		sockets.forEach(function(s) {
-			s.emit('toggleLED');
-		});
-	});
+	//listen for socket events
+	socket.on('turnRight', () => emitEventToAllSockets('turnRight'));
+	socket.on('turnLeft',  () => emitEventToAllSockets('turnLeft'));
+	socket.on('stop',      () => emitEventToAllSockets('stop'));
 
 	socket.on('disconnect', () => {
 		console.log('Client disconnected');
@@ -34,3 +31,10 @@ io.on('connection', (socket) => {
 		sockets = sockets.filter(s => s !== socket);
 	});
 });
+
+emitEventToAllSockets(event) {
+	console.log(event);
+	sockets.forEach(function(s) {
+		s.emit(event);
+	});
+}
