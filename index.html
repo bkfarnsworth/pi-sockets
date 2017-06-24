@@ -19,8 +19,13 @@
 				height: 200px;
 				width: 30%;
 				margin: 0 40px;
-				font-size: 25px;
+				font-size: 6vw;
 				font-family: 'Eczar', serif;
+			}
+
+			.button.active {
+				background-color: #ababab;
+				transform: translateY(4px);
 			}
 		</style>
 	</head>
@@ -50,18 +55,21 @@
 			function emitTurnRight(e) { 
 				console.log('turnRight');
 				e.preventDefault();
+				e.target.classList.add('active');
 				socket.emit('turnRight');
 			}
 
 			function emitTurnLeft(e) {
 				console.log('turnLeft');
 				e.preventDefault();
+				e.target.classList.add('active');
 				socket.emit('turnLeft');
 			}
 
 			function emitStop(e) {
 				console.log('stop');
 				e.preventDefault();
+				e.target.classList.remove('active');
 				socket.emit('stop');
 			}
 		</script>
