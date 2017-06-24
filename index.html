@@ -47,18 +47,21 @@
 			leftButton.addEventListener('mouseup',    emitStop);
 			leftButton.addEventListener('touchend',   emitStop);
 
-			function emitTurnRight() { 
+			function emitTurnRight(e) { 
 				console.log('turnRight');
+				e.preventDefault();
 				socket.emit('turnRight');
 			}
 
-			function emitTurnLeft() {
+			function emitTurnLeft(e) {
 				console.log('turnLeft');
+				e.preventDefault();
 				socket.emit('turnLeft');
 			}
 
-			function emitStop() {
+			function emitStop(e) {
 				console.log('stop');
+				e.preventDefault();
 				socket.emit('stop');
 			}
 		</script>
